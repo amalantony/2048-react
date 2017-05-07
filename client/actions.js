@@ -25,8 +25,5 @@ export const gameWon = generateActionCreator(GAME_WON);
 export const GAME_LOST = "GAME_LOST";
 export const gameLost = generateActionCreator(GAME_LOST);
 
-export const UPDATE_SCORE = "UPDATE_SCORE";
-export const updateScore = generateActionCreator(UPDATE_SCORE);
-
 export const NEW_GAME = "NEW_GAME";
 export const newGame = generateActionCreator(NEW_GAME);

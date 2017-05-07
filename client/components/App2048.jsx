@@ -50,11 +50,13 @@ class App2048 extends React.Component {
   bindKeys() {
     if (this.isBound) return; // don't bind keys twice
     this.isBound = true;
+    console.log("binding keys");
     document.addEventListener("keydown", this.dispatchEvent.bind(this));
   }
 
   unbindKeys() {
     this.isBound = false;
+    console.log("unbinding keys");
     document.removeEventListener("keydown", this.dispatchEvent.bind(this));
   }
 
@@ -87,7 +89,7 @@ class App2048 extends React.Component {
 
   render() {
     const { result, grid, winScore } = this.props;
-    window.setTimeout(() => this.updateGameState(grid, winScore));
+    window.setTimeout(() => this.updateGameState(grid, winScore), 10);
     if (result.length > 0) {
       // some result, unbind all keys
       this.unbindKeys();
