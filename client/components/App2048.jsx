@@ -29,7 +29,7 @@ class App2048 extends React.Component {
   }
 
   dispatchEvent(e) {
-    if (this.didWin) return true;
+    if (this.didWin || this.didLoose) return;
     const { left, right, up, down } = this.props;
     switch (e.keyCode) {
       case 37:
@@ -76,13 +76,11 @@ class App2048 extends React.Component {
     if (getScore(grid) === winScore) {
       // gameWon;
       this.didWin = true;
-      this.unbindKeys();
       won();
     }
     if (!isTransformable(grid)) {
       // gameLost;
       this.didLoose = true;
-      this.unbindKeys();
       lost();
     }
   }
@@ -90,14 +88,10 @@ class App2048 extends React.Component {
   render() {
     const { result, grid, winScore } = this.props;
     window.setTimeout(() => this.updateGameState(grid, winScore), 10);
-    if (result.length > 0) {
-      // some result, unbind all keys
-      this.unbindKeys();
-    } else {
+    if (result.length == 0) {
       // blank result, game has to start
       this.didWin = false;
       this.didLoose = false;
-      this.bindKeys();
     }
     //render all sub-components
     return (
