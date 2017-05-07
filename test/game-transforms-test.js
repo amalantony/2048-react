@@ -40,4 +40,13 @@ describe("In game-transforms", () => {
       [16, 8, 8]
     ]);
   });
+
+  describe("isTransformable", () => {
+    it("must identify when an array is transformable", () => {
+      expect(isTransformable([[2, 16], [2, 8]])).toEqual(true);
+    });
+    it("must identify when an array cannot be transformed", () => {
+      expect(isTransformable([[2, 4], [4, 8]])).toEqual(false);
+    });
+  });
 });
