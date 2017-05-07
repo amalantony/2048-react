@@ -47,27 +47,19 @@ export const mergeArray = (arr, resultArray = []) => {
     return resultArray;
   }
 
-  console.log(`arr: ${arr}`);
-
   const [first, second, ...rest] = [...arr];
   const rollOverable = isArrayRollOverable(arr);
 
   if (first === 0 && rollOverable) {
-    console.log("* 0");
     return mergeArray(rollOverPrefixZeros(arr), resultArray);
   } else if (!rollOverable) {
-    console.log("* 1");
     return mergeArray([], [...resultArray, ...arr]);
   } else if (first === second) {
-    console.log("* 2");
     return mergeArray([0, ...rest], [...resultArray, first + second]);
   } else {
-    console.log("* 3");
     return mergeArray([second, ...rest], [...resultArray, first]);
   }
 };
-
-console.log("MERGE ARRAY [8, 2, 4, 16]", mergeArray([8, 2, 4, 16]));
 
 export const generateRandomNumber = (min, max) => {
   // generates random integer between min(inclusive) and max(inclusive)
@@ -181,4 +173,14 @@ export const fillNewGridCell = grid => {
     ] = randomValue;
   }
   return gridCopy;
+};
+
+export const getScore = grid => {
+  let score = 0;
+  grid.forEach(row => {
+    row.forEach(el => {
+      if (el > score) score = el;
+    });
+  });
+  return score;
 };

@@ -10,13 +10,14 @@ import App2048 from "./components/App2048.jsx";
 /*
   In order to change the dimensions of the grid, or the win score, edit the values below
 */
-export const DIMENSION = 4; // 4 x 4 grid
-export const WINSCORE = 2048; // reach 2048 to win
+export const DIMENSION = 2; // 4 x 4 grid
+export const WINSCORE = 16; // reach 2048 to win
 
 // state initialisation
 const dimension = DIMENSION;
 const winScore = WINSCORE;
 const grid = initGameGrid(dimension);
+const currentScore = 0;
 
 const initialState = {
   grid: {

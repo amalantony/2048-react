@@ -21,7 +21,6 @@ import { fillNewGridCell, initGameGrid } from "./game-utils.js";
 import deepFreeze from "deep-freeze";
 
 export const grid = (state = {}, action) => {
-  console.log("In grid, got action", action.type, state);
   let newGrid;
   deepFreeze(state);
   deepFreeze(action);
