@@ -23,7 +23,6 @@ import { getScore } from "../game-utils.js";
 class App2048 extends React.Component {
   constructor() {
     super();
-    this.isBound = false;
     this.didWin = false;
     this.didLoose = false;
   }
@@ -48,14 +47,11 @@ class App2048 extends React.Component {
   }
 
   bindKeys() {
-    if (this.isBound) return; // don't bind keys twice
-    this.isBound = true;
     console.log("binding keys");
     document.addEventListener("keydown", this.dispatchEvent.bind(this));
   }
 
   unbindKeys() {
-    this.isBound = false;
     console.log("unbinding keys");
     document.removeEventListener("keydown", this.dispatchEvent.bind(this));
   }

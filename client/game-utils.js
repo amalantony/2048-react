@@ -104,11 +104,6 @@ export const initGameGrid = dimension => {
   return grid;
 };
 
-// console.log(tiltArray([2, 0, 2, 0]));
-// console.log(tiltArray([4, 0, 0, 2, 0, 4, 0, 8]));
-// console.log(mergeArray(tiltArray([4, 0, 0, 2, 0, 2, 0, 8])));
-// console.log(initializeGrid(4));
-
 export const flipGrid = grid => {
   // takes a N x N grid & flips it's rows & cols
   let tmpGrid = initEmptyGrid(grid.length);
@@ -120,18 +115,12 @@ export const flipGrid = grid => {
   return tmpGrid;
 };
 
-// console.log(gridFlip([[1, 2, 0], [0, 2, 0], [2, 0, 2]], 3));
-// console.log(gridFlip([[1, 0, 2], [2, 2, 0], [0, 0, 2]], 3));
-
 export const reverseGridRows = grid => {
   // takes a grid & reverses each of it's rows
   return grid.map(row => {
     return row.slice().reverse();
   });
 };
-
-// console.log(reverseGridRows([[1, 2, 0], [0, 2, 0], [2, 0, 2]], 3));
-// console.log(reverseGridRows([[1, 0, 2], [2, 2, 0], [0, 0, 2]], 3));
 
 export const mergeAndTiltGrid = grid => {
   // merges and tilts every row of the grid
@@ -176,6 +165,7 @@ export const fillNewGridCell = grid => {
 };
 
 export const getScore = grid => {
+  // get the score from the grid (score is the highest number in the grid)
   let score = 0;
   grid.forEach(row => {
     row.forEach(el => {

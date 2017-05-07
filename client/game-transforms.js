@@ -1,3 +1,7 @@
+/*
+  A set of methods to transform a grid as per the rules of the 2048 game.
+*/
+
 import { flipGrid, reverseGridRows, mergeAndTiltGrid } from "./game-utils.js";
 
 export const transformLeft = grid => {
@@ -19,6 +23,7 @@ export const transformDown = grid => {
 };
 
 const gridToString = grid => {
+  // turns the grid of numbers to a string, to make it easy to compare 2 grids for equality
   let finalStr = "";
   grid.forEach(row => {
     row.forEach(val => {

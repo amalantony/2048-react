@@ -19,7 +19,7 @@ Design Decisions
 ---
 * The app is designed to be as functional as possible. Most React components are implemented as functions. `App2048` is the only component implemented as a Class since it makes use of React Lifecycle methods. 
 
-* Redux was chosen as the application state manager for this application. This choice was made since Redux provides a convinient one directional data flow that makes state easy to reason about.
+* Redux was chosen as the application state manager for this application. This choice was made since Redux provides a convenient one directional data flow that makes state easy to reason about.
 
 * It must be easy to configure the game. For instance, in order to change the winning score or the grid size, simply alter the appropriate values in `client/client.js`.
 
@@ -65,4 +65,4 @@ The following Redux actions change the state of the app:
 ### Redux Reducers
 ---
 - `grid`: Reducer for all state changes related to the grid.
-- `result`: Reducer for all state changes related to the result.
+- `result`: Reducer for all state changes related to the result display.

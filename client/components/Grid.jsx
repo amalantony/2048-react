@@ -1,12 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-/*
-  [[0, 0, 0, 0]
-   [0, 0, 0, 0]
-   [2, 0, 0, 0]
-   [0, 2, 0, 0]]
-
-*/
 
 const Grid = ({ grid }) => {
   const rows = grid.map((row, i) => {
