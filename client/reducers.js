@@ -22,8 +22,11 @@ import deepFreeze from "deep-freeze";
 
 export const grid = (state = {}, action) => {
   let newGrid;
+
+  // if either state or action mutates, throw an error
   deepFreeze(state);
   deepFreeze(action);
+
   switch (action.type) {
     case MOVE_LEFT:
       newGrid = fillNewGridCell(transformLeft(state.grid));
