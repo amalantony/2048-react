@@ -4,7 +4,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 import rootReducer from "./reducers.js";
-import { initializeGrid } from "./utils.js";
+import { initGameGrid } from "./game-utils.js";
 import App2048 from "./components/App2048.jsx";
 
 /*
@@ -16,7 +16,7 @@ export const WINSCORE = 2048; // reach 2048 to win
 // state initialisation
 const dimension = DIMENSION;
 const winScore = WINSCORE;
-const grid = initializeGrid(dimension);
+const grid = initGameGrid(dimension);
 
 const initialState = {
   grid: {

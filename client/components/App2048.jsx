@@ -1,6 +1,15 @@
 import React from "react";
 import Grid from "./Grid.jsx";
-import { moveLeft, moveRight, moveUp, moveDown } from "../actions.js";
+import GameControl from "./GameControl.jsx";
+import {
+  moveLeft,
+  moveRight,
+  moveUp,
+  moveDown,
+  updateScore,
+  gameWon,
+  gameLost
+} from "../actions.js";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -60,8 +69,15 @@ class App2048 extends React.Component {
     this.unbindKeys();
   }
 
+  updateGameState() {
+    // update score, check for victory or loss & dispatch approp actions
+    // loss: try all tranformations & see if the array changes for any one of them, if not it's a loss
+    // victory: if the score == winScore
+  }
+
   render() {
-    const result = this.props.result;
+    const { result, grid, winScore } = this.props;
+    this.updateGameState(grid, winScore);
     if (result.length > 0) {
       // some result, unbind all keys
       this.unbindKeys();
@@ -72,6 +88,7 @@ class App2048 extends React.Component {
     //render all sub-components
     return (
       <div className="container">
+        <GameControl />
         <Grid />
       </div>
     );
@@ -83,7 +100,12 @@ App2048.propTypes = {
   right: PropTypes.func.isRequired,
   up: PropTypes.func.isRequired,
   down: PropTypes.func.isRequired,
-  result: PropTypes.string
+  updateScore: PropTypes.func.isRequired,
+  gameWon: PropTypes.func.isRequired,
+  gameLost: PropTypes.func.isRequired,
+  result: PropTypes.string.isRequired,
+  grid: PropTypes.array.isRequired,
+  winScore: PropTypes.number.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
@@ -91,13 +113,19 @@ const mapDispatchToProps = dispatch => {
     left: () => dispatch(moveLeft()),
     right: () => dispatch(moveRight()),
     up: () => dispatch(moveUp()),
-    down: () => dispatch(moveDown())
+    down: () => dispatch(moveDown()),
+    updateScore: () => dispatch(updateScore()),
+    gameWon: () => dispatch(gameWon()),
+    gameLost: () => dispatch(gameLost())
   };
 };
 
 const mapStateToProps = state => {
+  console.log("STATE", state);
   return {
-    result: state.result
+    result: state.result,
+    grid: state.grid.grid,
+    winScore: state.grid.winScore
   };
 };
 
